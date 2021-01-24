@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    border: 1px solid red;
+}
+.row {
+    border: 1px solid blue;
+}
+
+.col {
+    border: 1px solid green;
+}
