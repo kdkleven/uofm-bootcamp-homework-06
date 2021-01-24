@@ -13,3 +13,7 @@ h1 {
 .col {
     border: 1px solid green;
 }
+
+.today {
+    padding: 10px;
+}
