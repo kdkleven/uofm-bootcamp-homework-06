@@ -17,3 +17,7 @@ h1 {
 .today {
     padding: 10px;
 }
+
+span {
+    display: inline-block;
+}

@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="text/javascript" href="script.js">
 </head>
 
 <body>
@@ -20,20 +19,20 @@
             <div class="col-3 searchDiv">
                 <h4>Search</h4>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="cityEl" placeholder="Enter city" aria-label="Location" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Enter city" aria-label="Location" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button" id="searchEl">Search</button>
+                      <button class="btn btn-outline-secondary" type="button" id="submit">Search</button>
                     </div>
                   </div>
             </div>
             <div class="col-9 todayDiv">
                 <div class="today-card" style="width: 18rem;">
-                    <h3>City<span> + Date</span></h3>
-                    <div class="card-body">
-                        <p class="card-text">Temperature(F)</p>
-                        <p class="card-text">Humidity(%)</p>
-                        <p class="card-text">Wind Speed (MPH)</p>
-                        <p class="card-text">UV Index (INT)</p>
+                    <h3 id="mainCardTitle"></h3>
+                    <div class="card-body mainCardDetails">
+                        <p class="card-text" id="temperature"></p>
+                        <p class="card-text" id="humidity"></p>
+                        <p class="card-text" id="wind"></p>
+                        <p class="card-text" id="uvi"></p>
                     </div>
                 </div>
             </div>
@@ -78,6 +77,9 @@
         </div>
         </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
