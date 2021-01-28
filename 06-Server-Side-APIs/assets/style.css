@@ -1,6 +1,15 @@
 h1 {
     text-align: center;
     padding: 20px;
+    font-size: 48px;
+    background-color: slategrey;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.currentCard {
+    border: 1px solid orange;
+    width: 16rem;
 }
 
 .container {
