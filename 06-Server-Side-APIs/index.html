@@ -19,11 +19,12 @@
             <div class="col-3 searchDiv">
                 <h4>Search</h4>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="searchInput" placeholder="Enter city" aria-label="Location" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Enter city"
+                        aria-label="Location" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button" id="submit">Search</button>
+                        <button class="btn btn-outline-secondary" type="button" id="submit">Search</button>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="col-9 todayDiv">
                 <div class="currentCard">
@@ -39,46 +40,49 @@
         </div>
         <div class="row">
             <div class="col-3 historyDiv">
-                <h5> Locations</h5>
-                <div>
-                    <p></p>
-                </div>
+                <h5 id="listTitle"></h5>
+                <ul class="historyList">
+                    <!-- Insert saved cities list here -->
+                </ul>
             </div>
             <div class="col-9 5dayDiv">
-                <h5>5-day forecast</h5>
+                <h5 id="5dayTitle"></h5>
                 <div class="row">
                     <div class="col-2 card-body">
-                        <h6>Date</h6>
-                        <p class="card-text">Temp(F)</p>
-                        <p class="card-text">Humidity(%)</p>
+                        <h6 id="fcDate-0"></h6>
+                        <p class="card-text" id="fcTemp-0"></p>
+                        <p class="card-text" id="fcHumid-0"></p>
                     </div>
                     <div class="col-2 card-body">
-                        <h6>Date</h6>
-                        <p class="card-text">Temp(F)</p>
-                        <p class="card-text">Humidity(%)</p>
+                        <h6 id="fcDate-1"></h6>
+                        <p class="card-text" id="fcTemp-1"></p>
+                        <p class="card-text" id="fcHumid-1"></p>
                     </div>
                     <div class="col-2 card-body">
-                        <h6>Date</h6>
-                        <p class="card-text">Temp(F)</p>
-                        <p class="card-text">Humidity(%)</p>
+                        <h6 id="fcDate-2"></h6>
+                        <p class="card-text" id="fcTemp-2"></p>
+                        <p class="card-text" id="fcHumid-2"></p>
                     </div>
                     <div class="col-2 card-body">
-                        <h6>Date</h6>
-                        <p class="card-text">Temp(F)</p>
-                        <p class="card-text">Humidity(%)</p>
+                        <h6 id="fcDate-3"></h6>
+                        <p class="card-text" id="fcTemp-3"></p>
+                        <p class="card-text" id="fcHumid-3"></p>
                     </div>
                     <div class="col-2 card-body">
-                        <h6>Date</h6 >
-                        <p class="card-text">Temp(F)</p>
-                        <p class="card-text">Humidity(%)</p>
+                        <h6 id="fcDate-4"></h6>
+                        <p class="card-text" id="fcTemp-4"></p>
+                        <p class="card-text" id="fcHumid-4"></p>
                     </div>
-               </div>
+                </div>
             </div>
         </div>
         </div>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="./script/script.js"></script>
 </body>
 

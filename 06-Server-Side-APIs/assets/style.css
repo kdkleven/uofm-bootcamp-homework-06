@@ -9,7 +9,8 @@ h1 {
 
 .currentCard {
     border: 1px solid orange;
-    width: 16rem;
+    width: 15rem;
+    padding: 10px;
 }
 
 .container {
