@@ -17,9 +17,8 @@
         <main class="container">
             <div class="row">
                 <div class="col-4 searchDiv">
-                    <h4>Search</h4>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="searchInput" placeholder="Enter city"
+                        <input type="text" class="form-control" id="searchInput" placeholder="Enter location"
                             aria-label="Location" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" id="submit">Search</button>
@@ -34,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-8 todayDiv">
+                <div class="col-8 todayDiv hidden">
                     <div class="card-body mainCardDetails">
                         <h3 id="todayTitle"></h3>
                         <h4 id="mainCardTitle"></h4>
@@ -44,7 +43,7 @@
                         <p class="card-text" id="wind"></p>
                         <p class="card-text" id="uvi"></p>
                     </div>
-                    <div class="col-12 forecastDiv">
+                    <div class="col-12 forecastDiv hidden">
                         <h5 id="5dayTitle"></h5>
                         <div class="row forecastDetails">
                             <div class="col-2 card-body">

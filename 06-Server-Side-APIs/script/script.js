@@ -1,25 +1,22 @@
 
 
 var APIkey = "1c0d3dc2df97a78b630d4385a864717d";
-var searchHistory = [];
 var date = moment().format("l");
 
 $('#submit').on("click", function (event) {
     event.preventDefault();
-    $('.card-text').html = "";
-    $('.card-body').html = "";
-    $('<img>').html = "";
-    $('<h3>').html = "";
-    $('.currentCard').html = "";
+    $('.todayDiv').removeClass('hidden');
+    $('.forecastDiv').removeClass('hidden');
 
     var search = $('#searchInput').val().trim();
     
-    searchHistory.push(search);
-    console.log(searchHistory);
-
+    saveSearch(search);
     searchWeather(search);
-    saveSearch(searchHistory);
-    //showWeather();
+});
+
+$('.historyBtn').on('click', function(event) {
+    event.preventDefault();
+    searchWeather(this);
     
 });
 
@@ -70,6 +67,7 @@ function calculateUV(latitude, longitude) {
     });
 }
 
+// Get 5-day forecast and render it to the page
 function getForecast(latitude, longitude) {
 
     var forecastURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=current+minutely+hourly+alerts&units=imperial&appid=" + APIkey;
@@ -80,7 +78,7 @@ function getForecast(latitude, longitude) {
         method: "GET",
     })
         .then(function (forecastResponse) {
-           console.log(forecastResponse);
+           //console.log(forecastResponse);
 
             for (var i = 0; i < 5; i++) {
                 fDate = moment.unix(forecastResponse.daily[i].dt).format('l');
@@ -99,33 +97,28 @@ function getForecast(latitude, longitude) {
         });
 }
 
-
-function displayWeather(cardTitleEl, iconEl, tempEl, humidEl, windEl) {
-    // Display values on main card
-    // Ensure UV index is color-coded as favorable, moderate, severe
-    // display current day's weather (clouds, sun, rain, snow, etc.)
-    $('#mainCardTitle').append(cardTitleEl);
-    $('.mainCardDetails').append(iconEl, tempEl, humidEl, windEl);
-
-}
-
-function saveSearch(searchHistory) {
+function saveSearch(search) {
     
-    localStorage.setItem("searches", searchHistory);
+    localStorage.setItem("searches", search);
+    
+    var searchHistory = $('<button>').html(search);
+    
+    searchHistory.attr({class: 'historyBtn btn btn-light', type: 'button'});
+    searchHistory.css('margin', '5px');
+    
+    $('.historyDiv').append(searchHistory);
+
+    $('#searchInput').val('');
+
     renderHistory(searchHistory);
 
 }
 
-
-function renderHistory(searchHistory) {
-    $('.historyDiv').empty();
-    $('.historyDiv').text("HISTORY LIST");
+function renderHistory() {
     
+    localStorage.getItem("searches");
 
-
-    // for (var i = 0; i < searchHistory.length; i++) {
-    //     localStorage.getItem("searches");   
-    //     //$('<button>').attr({id: })
-    // }
 
 }
+
+

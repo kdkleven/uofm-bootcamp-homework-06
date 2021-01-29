@@ -1,14 +1,18 @@
 h1 {
-    text-align: center;
-    padding: 20px;
-    font-size: 48px;
+    padding: 10px;
+    font-size: 40px;
     background-color: rgb(153, 99, 0);
-    color: white;
-    margin-bottom: 30px;
+    color: rgb(49,49,49);
+    margin-bottom: 35px;
+    text-align: left;
 }
 
 span {
     display: inline-block;
+}
+
+body {
+    background-color: rgb(49, 49, 49);
 }
 
 .currentCard {
@@ -21,8 +25,12 @@ span {
 }
 
 .card-body {
-    border: 1px solid silver;
-    color: black;
+    color: white;
     margin: 10px;
+    background-color: rgb(153, 99, 0);
     display: inline-block;
+}
+
+.hidden {
+    display: none;
 }
