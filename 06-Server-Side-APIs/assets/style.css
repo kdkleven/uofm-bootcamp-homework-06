@@ -2,32 +2,27 @@ h1 {
     text-align: center;
     padding: 20px;
     font-size: 48px;
-    background-color: slategrey;
+    background-color: rgb(153, 99, 0);
     color: white;
     margin-bottom: 30px;
 }
 
+span {
+    display: inline-block;
+}
+
 .currentCard {
-    border: 1px solid orange;
     width: 15rem;
     padding: 10px;
-}
-
-.container {
-    border: 1px solid red;
-}
-.row {
-    border: 1px solid blue;
-}
-
-.col {
-    border: 1px solid green;
 }
 
 .today {
     padding: 10px;
 }
 
-span {
+.card-body {
+    border: 1px solid silver;
+    color: black;
+    margin: 10px;
     display: inline-block;
 }
