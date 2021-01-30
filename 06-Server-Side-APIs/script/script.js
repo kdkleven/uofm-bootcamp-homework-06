@@ -63,8 +63,25 @@ function searchWeather(search) {
                 url: uviURL,
                 method: "GET",
                 success: function (data) {
-                    var uviEl = $('#uvi').html("UV Index: " + data.value);
-                    $('.mainCardDetails').append(uviEl);
+                    var uviEl = $('#uvIndex').html("UV Index: " + Math.floor(data.value));
+                    $('#uvIndex').css("width", "auto");
+                    
+                    uviEl.css("background-color", "transparent");
+                    
+                    if (uviEl.val() >= 8) {
+                        uviEl.css("background-color", "red");
+
+                    } else if (uviEl.val() >= 6 && uviEl.val() <= 7) {
+                        uviEl.css("background-color", "orange");
+
+                    } else if (uviEl.val() >= 3 && uviEl.val() <= 5) {
+                        uviEl.css("background-color", "yellow");
+
+                    } else {
+                        uviEl.css("background-color", "blue");
+
+                    }                   
+                    $('#uvi').append(uviEl);
                 }
             });
 
@@ -95,6 +112,10 @@ function searchWeather(search) {
                 });
 
         });
+}
+
+function styleUV (uviEl) {
+
 }
 
 // save the current search parameter to local storage and display a corresponding button
