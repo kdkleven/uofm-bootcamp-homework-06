@@ -2,8 +2,9 @@
 
 var APIkey = "1c0d3dc2df97a78b630d4385a864717d";
 var date = moment().format("l");
+var entry = "";
 
-$('#submit').on("click", function (event) {
+$('#submit').click(function (event) {
     event.preventDefault();
 
     var search = $('#searchInput').val().trim();
@@ -17,18 +18,13 @@ $('#submit').on("click", function (event) {
 
     searchWeather(search);
     saveSearch(search);
-
+    renderHistory();
 });
 
-
-$('#historyBtn-0').click(function(event){
-    event.preventDefault();
+$(".historyList").on("click", ".historyBtn", function(){
     console.log("clicked");
-    
-    var pastSearch = $(this).val();
-    
-    searchWeather(pastSearch);
-
+    searchWeather($(this).text().trim());
+ 
 });
 
 // call openweathermap APIs to get weather
@@ -105,7 +101,6 @@ function saveSearch(searchJSON) {
     
     localStorage.setItem("history", JSON.stringify(savedSearch));
     console.log(savedSearch);
-    renderHistory();
 }
 
 // render past searches as buttons on the page
@@ -123,9 +118,10 @@ function renderHistory() {
     
             renderBtn.attr('id', 'historyBtn-' + i);
             renderBtn.html(lastSearch[i]);  
-            $('.historyDiv').append(renderBtn);
+            $('.historyList').append(renderBtn);
         }   
     }
+    entry = "";
 }
 
 // display buttons for past searches (if they exist)
