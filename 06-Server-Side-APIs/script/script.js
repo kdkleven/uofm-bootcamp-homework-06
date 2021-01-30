@@ -2,7 +2,9 @@
 
 var APIkey = "1c0d3dc2df97a78b630d4385a864717d";
 var date = moment().format("l");
-var entry = "";
+var savedSearch = [];
+var latestSearch = [];
+var updateSearch = [];
 
 $('#submit').click(function (event) {
     event.preventDefault();
@@ -12,19 +14,20 @@ $('#submit').click(function (event) {
     if (search === "" || search === null) {
         return;
     }
-  
+
     $('.todayDiv').removeClass('hidden');
     $('.forecastDiv').removeClass('hidden');
-
     searchWeather(search);
     saveSearch(search);
     renderHistory();
+    search = "";
 });
 
-$(".historyList").on("click", ".historyBtn", function(){
-    console.log("clicked");
+$(".historyList").on("click", ".historyBtn", function () {
+    $('.todayDiv').removeClass('hidden');
+    $('.forecastDiv').removeClass('hidden');
     searchWeather($(this).text().trim());
- 
+    
 });
 
 // call openweathermap APIs to get weather
@@ -38,8 +41,6 @@ function searchWeather(search) {
     })
         .then(function (weatherResponse) {
 
-            // console.log(weatherResponse);
-
             var latitude = weatherResponse.coord.lat;
             var longitude = weatherResponse.coord.lon;
             var uviURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIkey;
@@ -48,8 +49,9 @@ function searchWeather(search) {
             var iconURL = "http://openweathermap.org/img/wn/" + icon + ".png";
 
             // Declare variables to display on the main card            
-            $('#todayTitle').html("Current Weather");
-            $('#mainCardTitle').html(search + " " + "(" + date + ")");
+            $('#todayTitle').html(search);
+            $('#todayTitle').css("color", "white");
+            $('#mainCardTitle').html("Current Weather " + "(" + date + ")");
             $('#mainIcon').attr("src", iconURL);
             $('#temperature').html("Temperature: " + Math.floor(weatherResponse.main.temp) + "&deg");
             $('#humidity').html("Humidity: " + Math.floor(weatherResponse.main.humidity) + "&deg");
@@ -73,6 +75,9 @@ function searchWeather(search) {
             })
                 .then(function (forecastResponse) {
 
+                    $('#5dayTitle').html("5 Day Forecast");
+                    $('#5dayTitle').css("color", "white");
+
                     for (var i = 0; i < 5; i++) {
                         fDate = moment.unix(forecastResponse.daily[i].dt).format('l');
                         fIcon = forecastResponse.daily[i].weather[0].icon;
@@ -90,38 +95,41 @@ function searchWeather(search) {
                 });
 
         });
-    }
-
-var savedSearch = [];
+}
 
 // save the current search parameter to local storage and display a corresponding button
 function saveSearch(searchJSON) {
+   
+    if (localStorage.getItem("history") == "" || localStorage.getItem("history") == null) {
+        // push search to array
+        savedSearch.push(searchJSON);
+        // stringify and write array to local storage
+        localStorage.setItem("history", JSON.stringify(savedSearch));
+    } else {
+        // assign local storage values to last search
+        updateSearch = JSON.parse(localStorage.getItem("history"));
+        updateSearch.push(searchJSON);
+        localStorage.setItem("history", JSON.stringify(updateSearch));
+    }
     
-    savedSearch.push(searchJSON);
-    
-    localStorage.setItem("history", JSON.stringify(savedSearch));
-    console.log(savedSearch);
 }
-
+var renderBtn;
 // render past searches as buttons on the page
 function renderHistory() {
     $('#searchInput').val('');
+    latestSearch = JSON.parse(localStorage.getItem("history"));
     
-    var lastSearch = JSON.parse(localStorage.getItem("history"));
-    var renderBtn = $('<button>').attr('type', 'button');
-    renderBtn.attr('class', 'btn btn-light historyBtn');
-    renderBtn.css("margin", "5px");
-
-    for (var i = 0; i < savedSearch.length; i++) {
-    
-        if (lastSearch !== null) {
-    
-            renderBtn.attr('id', 'historyBtn-' + i);
-            renderBtn.html(lastSearch[i]);  
-            $('.historyList').append(renderBtn);
-        }   
+    if (latestSearch !== null) {
+        $('.historyList').empty();
+        for (var j = 0; j < latestSearch.length; j++) {
+            renderBtn = $('<button>');    
+            renderBtn.attr({ type: 'button', class: 'btn btn-light historyBtn', id: 'historyBtn-' + j });
+            renderBtn.css("margin", "5px");
+            renderBtn.html(latestSearch[j]);
+            $('.historyList').append(renderBtn);  
+        }
     }
-    entry = "";
+
 }
 
 // display buttons for past searches (if they exist)

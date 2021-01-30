@@ -15,6 +15,14 @@ body {
     background-color: rgb(49, 49, 49);
 }
 
+.sectionL {
+    margin-right: 10px;
+}
+
+.sectionR {
+    border-left:1px solid rgb(153, 99, 0)
+}
+
 .currentCard {
     width: 15rem;
     padding: 10px;
