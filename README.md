@@ -28,9 +28,10 @@ THEN I am presented with the last searched city forecast
 
 The following image demonstrates the application functionality:
 
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
+![weather dashboard demo](_assignment/06-server-side-apis-homework-demo.png)
 
 ## Deliverable
+<img src="assets/deliverable.PNG" alt="weather dashboard" width="1185"/><br>
 GitHub: https://github.com/kdkleven/uofm-bootcamp-homework-06
-
+<br>
 Live Link: https://kdkleven.github.io/weatherDashboard/
