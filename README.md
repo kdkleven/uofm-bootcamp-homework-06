@@ -32,4 +32,4 @@ The following image demonstrates the application functionality:
 
 ## Deliverable
 GitHub: https://github.com/kdkleven/uofm-bootcamp-homework-06
-Live Link: https://kdkleven.github.io/uofm-bootcamp-homework-06/06-Server-Side-APIs/index.html
+Live Link: https://kdkleven.github.io/weatherDashboard/
